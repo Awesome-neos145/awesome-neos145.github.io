@@ -1,0 +1,12 @@
+body {
+  font-family: "Arial";
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  letter-spacing: 0px;
+  word-spacing: 0px;
+  color: #ffffff;
+  background:linear-gradient(#0000ff,#4242ff) #4242ff;
+  background-size:2px 2px;
+}
