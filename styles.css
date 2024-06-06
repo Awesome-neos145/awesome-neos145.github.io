@@ -10,8 +10,8 @@ body{
     text-align:center;
     background-repeat: no-repeat;
     color:#020202; /* Set font color to off-black */
-    background:linear-gradient(#ff0600,#ff6a00) #ff6a00; /* Set background image to linear-gradient, then set the default background color to the end of the gradient */
-    background-size:10000px 5500px;
+    background:linear-gradient(#ff0600,#ff6a00,#ff6a00,#ff0600) #ff6a00;
+    background-size:100vw 100vh;
     text-shadow:2px 2px 1px #0004;
 }
 
