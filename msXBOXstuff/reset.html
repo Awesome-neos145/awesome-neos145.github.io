@@ -9,13 +9,16 @@
         async function generateButtonCombo() {
             const hddKeyHex = document.getElementById("hddKey").value.trim();
             if (!/^[0-9a-fA-F]+$/.test(hddKeyHex)) {
-                alert("This is not a valid key. It should have no spaces and be 32 characters long.");
+                alert("The key you have entered does not contain a valid letter. It must be from 0-9 in numbers and A-F in letters. Double check for spaces, also.");
                 return;
             }
 
             const hddKey = hexToByteArray(hddKeyHex);
             const randomKey = hexToByteArray("BC20051AB597F96048375A83787FE594");
-
+            if (hddKeyHex.length !== 32) {
+                alert("The key must be exactly 32 characters long.");
+                return;
+            }
             const keyComboGeneratorHmac = await hmacSHA1(randomKey, hddKey);
             const keyComboGeneratorDigest = hexToByteArray(keyComboGeneratorHmac);
 
