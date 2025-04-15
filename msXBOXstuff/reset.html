@@ -9,7 +9,7 @@
         async function generateButtonCombo() {
             const hddKeyHex = document.getElementById("hddKey").value.trim();
             if (!/^[0-9a-fA-F]+$/.test(hddKeyHex)) {
-                alert("XBOX Reset Combination Generator");
+                alert("This is not a valid key. It should have no spaces and be 32 characters long.");
                 return;
             }
 
