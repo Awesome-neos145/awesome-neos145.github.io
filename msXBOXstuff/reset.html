@@ -1,0 +1,83 @@
+<!-- Code derived from CitricDolphin1's xbox-restore-combo-calculator script. -->
+<!-- https://github.com/CitricDolphin1/xbox-restore-combo-calculator -->
+
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/styles.css">
+    <title>XBOX Reset Combination Generator</title>
+    <script>
+        async function generateButtonCombo() {
+            const hddKeyHex = document.getElementById("hddKey").value.trim();
+            if (!/^[0-9a-fA-F]+$/.test(hddKeyHex)) {
+                alert("XBOX Reset Combination Generator");
+                return;
+            }
+
+            const hddKey = hexToByteArray(hddKeyHex);
+            const randomKey = hexToByteArray("BC20051AB597F96048375A83787FE594");
+
+            const keyComboGeneratorHmac = await hmacSHA1(randomKey, hddKey);
+            const keyComboGeneratorDigest = hexToByteArray(keyComboGeneratorHmac);
+
+            const recoveryKeyMap = "AXYUDLR";
+            const buttonIndexes = [];
+            let digestCounter = 0;
+
+            for (let i = 0; i < 4; i++) {
+                const wordInt = (keyComboGeneratorDigest[digestCounter] | (keyComboGeneratorDigest[digestCounter + 1] << 8));
+                const buttonIndex = wordInt % 7;
+                buttonIndexes.unshift(buttonIndex);
+                digestCounter += 2;
+            }
+
+            const buttons = buttonIndexes.map(index => recoveryKeyMap[index]);
+            const combo = `Y${buttons[0]}${buttons[1]}${buttons[2]}${buttons[3]}`;
+
+            document.getElementById("result").innerText = `Your XBOX's reset combo is: ${combo}`;
+            document.getElementById("instructions").innerText = "On the Microsoft Dashboard, go to Settings > System Info. Input the code above. U,D,L,R are all directions on the Left Joystick. You may use this code as many times as you wish.";
+        }
+
+        function hexToByteArray(hex) {
+            const bytes = [];
+            for (let i = 0; i < hex.length; i += 2) {
+                bytes.push(parseInt(hex.substr(i, 2), 16));
+            }
+            return bytes;
+        }
+
+        async function hmacSHA1(key, message) {
+            const cryptoKey = new Uint8Array(key);
+            const cryptoMessage = new Uint8Array(message);
+
+            const blockSize = 64; // Block size for SHA-1
+            const oKeyPad = new Uint8Array(blockSize).fill(0x5c);
+            const iKeyPad = new Uint8Array(blockSize).fill(0x36);
+
+            for (let i = 0; i < cryptoKey.length; i++) {
+                oKeyPad[i] ^= cryptoKey[i];
+                iKeyPad[i] ^= cryptoKey[i];
+            }
+
+            const innerHash = await sha1(new Uint8Array([...iKeyPad, ...cryptoMessage]));
+            return sha1(new Uint8Array([...oKeyPad, ...hexToByteArray(innerHash)]));
+        }
+
+        function sha1(message) {
+            const crypto = window.crypto || window.msCrypto;
+            const buffer = new Uint8Array(message);
+            return crypto.subtle.digest("SHA-1", buffer).then(hashBuffer => {
+                const hashArray = Array.from(new Uint8Array(hashBuffer));
+                return hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>XBOX Reset Combination Generator</h1>
+    <label for="hddKey">Input your HDD key in hexadecimal (no spaces):</label>
+    <input type="text" id="hddKey" />
+    <button onclick="generateButtonCombo()">Generate</button>
+    <p id="result"></p>
+    <p id="instructions"></p>
+</body>
+</html>
