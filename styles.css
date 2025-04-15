@@ -28,7 +28,6 @@ input {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-  text-shadow:2px 2px 1px #000;
   vertical-align: bottom;
 }
 
@@ -43,7 +42,6 @@ button {
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
-  text-shadow:2px 2px 1px #000;
   cursor: pointer;
 }
 
