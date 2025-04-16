@@ -83,4 +83,24 @@
     <p id="result"></p>
     <p id="instructions"></p>
 </body>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function generateLetters() {
+            const map = "UDLRAXY";
+            let result = "Y";
+            for (let i = 0; i < 4; i++) {
+                const randomIndex = Math.floor(Math.random() * map.length);
+                result += map[randomIndex];
+            }
+            document.getElementById("output").textContent = result;
+        }
+    </script>
+</head>
+<body>
+    <h1>Or, test your luck...</h1>
+    <button onclick="generateLetters()">Generate</button>
+    <p id="output"></p>
+</body>
 </html>
