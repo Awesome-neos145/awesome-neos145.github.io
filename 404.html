@@ -1,18 +1,36 @@
 <!DOCTYPE html>
 <html>
-<title>Not found!</title>
-<link rel="stylesheet" href="styles.css">
-<h1>404</h1>
-<p>What happened?</p>
-<br>
-<br>
-<br>
-<p>The web page could not be found due to one of the following reasons:</p>
-<br>
-<p><li>You mistyped the URL.</li>
-<br>
-<p><li>This webpage is not available.</li>
-<br>
-<br>
-<p>If you want, <a href="https://awes145.com/">go back home.</a></p>
+    <link rel="stylesheet" href="/styles.css">
+    <title id="erhhhhgh"></title>
+    <script>
+        const titleerror = [
+            "That wasn't right.",
+            "Only stupid people would think that.",
+            "Huh?"
+        ];
+        const randomtitleIndex = Math.floor(Math.random() * titleerror.length);
+        document.getElementById('erhhhhgh').textContent = titleerror[randomtitleIndex];
+    </script>
+    <h1 id="errors"></h1>
+    <script>
+        const messages = [
+            "It's just so sad we can't be on this one together...",
+            "Hey, you're just SO off base!",
+            "Whoo, you must be a real genius to come up with that one!",
+            "See, that's where you're wrong.",
+            "Uhh, I don't think so...",
+            "Don't you people have JOBS?",
+            "Get outta here, man.",
+            "That's not right.",
+            "I... am at a loss for words.",
+            "Invalid. Try again.",
+            "You're drunk, right?"
+        ];
+        const randomIndex = Math.floor(Math.random() * messages.length);
+        document.getElementById('errors').textContent = messages[randomIndex];
+    </script>
+    <p>It appears you have reached a page that, quite frankly, hasn't been created yet.</p>
+    <p>Or I removed something on accident... (let's hope not)</p>
+    <p>To put it simply...</p>
+    <a href="https://awes145.com/"><h1>Go back</h1></a>
 </html>
