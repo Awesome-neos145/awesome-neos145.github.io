@@ -1,5 +1,6 @@
 /* CSS Code by SKCro */
 /* note from awes145: thank you skcro */
+/* also, thanks Kris Perry */
 @import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap); /* Import Montserrat font from Google */
 
 body{
@@ -62,4 +63,54 @@ code{
     color:#f0f0f0;
     text-shadow:2px 2px 1px #000;
     background:#0008; /* Use half-transparent background for codeblocks */
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background:linear-gradient(#ff0600,#ff6a00,#ff6a00,#ff0600) #ff6a00;
+}
+
+li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  background:linear-gradient(#ff6a00,#ff0600,#ff0600,#ff6a00) #ff0600;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background:linear-gradient(#ff0600,#ff6a00,#ff6a00,#ff0600) #ff6a00;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
