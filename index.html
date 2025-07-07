@@ -1,6 +1,13 @@
+
 <!DOCTYPE html>
-<!-- note from awes145: Kris Perry made this code -->
-<!-- comments are from him, not me -->
+<!-- note from awes145: Kris Perry made this code
+comments are from him, not me 
+
+Note from KP: if you want a link on the navbar to open in the content iframe, simply find the '<a href' and add a ' target="mainframe" '
+on the otherhand, links clicked inside the iframe will auto open IN the iframe.
+if you want a link on a LOADED page to open without the iframe (E.G sending offboard to discord, etc..)
+You will need to add ' target="_parent" ' to those <a> tags in their respective HTML --> 
+ 
 <head><title>Awesome_neos145</title>
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" type="image/x-icon" href="https://awes145.com/favicon.ico">
@@ -17,42 +24,42 @@
 <ul>
 
 <li>
-<a href="https://awes145.com/">Home</a>
+<a target="mainframe" href="https://awes145.com/">Home</a>
 </li>
 
 <!-- note from KP: This is a dropdown -->  
 <!-- cool -->
 <li class="dropdown">
-<a href="javascript:void(0)" class="dropbtn">Stuff</a>
+<a target="mainframe" href="javascript:void(0)" class="dropbtn">Stuff</a>
 <!-- KP note 2 - Electric Boogaloo: Heres the menu options -->
 <div class="dropdown-content">
-<a href="https://awes145.com/blog">Tutorials</a>
-<a href="https://awes145.com/stuff">Stuff</a>
-<a href="https://awes145.com/fcs">Friend Codes</a>
-<a href="https://awes145.com/themes">Themes</a>
-<a href="https://awes145.com/leapsterstuff">Leapster Stuff</a>
-<a href="https://awes145.com/gamma">EarthBound: PSI GAMMA</a>
-<a href="https://awes145.com/amp">awes145's WOLF3D Mission Pack</a>
-<a href="https://awes145.com/msXBOXstuff">Microsoft XBOX Tools</a>
-<a href="https://awes145.com/updates.html">Website Updates</a>
+<a target="mainframe" href="https://awes145.com/blog">Tutorials</a>
+<a target="mainframe" href="https://awes145.com/stuff">Stuff</a>
+<a target="mainframe" href="https://awes145.com/fcs">Friend Codes</a>
+<a target="mainframe" href="https://awes145.com/themes">Themes</a>
+<a target="mainframe" href="https://awes145.com/leapsterstuff">Leapster Stuff</a>
+<a target="mainframe" href="https://awes145.com/gamma">EarthBound: PSI GAMMA</a>
+<a target="mainframe" href="https://awes145.com/amp">awes145's WOLF3D Mission Pack</a>
+<a target="mainframe" href="https://awes145.com/msXBOXstuff">Microsoft XBOX Tools</a>
+<a target="mainframe" href="https://awes145.com/updates.html">Website Updates</a>
 </div>
 </li>
 <!-- KP note: Wait here, you can put more
 
 <li class="dropdown">
-<a href="javascript:void(0)" class="dropbtn">Stuff</a>
+<a target="mainframe" href="javascript:void(0)" class="dropbtn">Stuff</a>
 <div class="dropdown-content">
-<a href="#">??????</a>
-<a href="#">??????</a>
+<a target="mainframe" href="#">??????</a>
+<a target="mainframe" href="#">??????</a>
 </div>
 </li>
 
 -->
 <!-- leaving it be because idk if i'll add more -->
 <li>
-<a href="https://awes145.com/links">Links</a>
+<a target="mainframe" href="https://awes145.com/links">Links</a>
 </li>
-<li><a href="https://awes145.com/contact">Contact</a>
+<li><a target="mainframe" href="https://awes145.com/contact">Contact</a>
 </li>
 <!-- another dropdown menu -->
 <li class="dropdown" style="float:right;">
@@ -69,12 +76,14 @@
 </div>
 </li>
 </ul>
-<h1>Hello!</h1>
-<p>You've landed at my website. Welcome!</p>
-<p>You can navigate the site using the menubar.</p>
-<h6>Main website structure by awes145</h6>
-<h6>CSS design by SKCro, awes145, and Kris Perry</h6>
-<h6>Additional features by Kris Perry</h6>
+
+<!--Start Content Loader Iframe here -->
+<!--wrap the iframe in a div so we can STREEEETCH it even if the loaded page has no content, this somewhat prevents the iframe scrollbars and borderbox showing up halfway down the page-->
+<div style="position:fixed;width:100%;height:100%;">
+<iframe allowfullscreen="true" style="width:100%; min-height:100%;" id="mainframe" name="mainframe" class="mainframe" src="https://awes145.com/welcome.html"><!--Default loaded URL jut there--></iframe></div>
+
+<!-- end main document Iframe/start footer maybe?, hintedy hint-hint-->
+
 </body>
 </html>
 <!-- i'm a dumbass lmao -->
