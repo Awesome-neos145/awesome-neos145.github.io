@@ -47,7 +47,7 @@ button {
   cursor: pointer;
 }
 
-alerttab {
+.alerttab {
     background:linear-gradient(#ff0600,#ff6a00,#ff6a00,#ff0600) #ff6a00;
     border: 1px solid yellow;
     border-radius: 12px;
