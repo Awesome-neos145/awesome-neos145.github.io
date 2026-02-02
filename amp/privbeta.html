@@ -121,7 +121,8 @@
                         'Maybe try turning off caps lock?',
                         'Hm.',
                         'I surely must have sent you the wrong one!',
-                        'Oho you missed that one. Try another!'
+                        'Oho you missed that one. Try another!',
+                        'I used to think you were a smart guy.'
                     ];
                     const randomMessage = errorMessages[Math.floor(Math.random() * errorMessages.length)];
                     messageDiv.textContent = randomMessage;
@@ -135,7 +136,7 @@
 
         function triggerDownload() {
             // give zip
-            const _url = atob('aHR0cHM6Ly9maWxlLmdhcmRlbi9ZdHhSbC1nSGtXVmtmUHM3L0FNUHJlbGVhc2VzL2FtcDIwYi0xMjgyNjczNzE1LnppcA==');
+            const _url = atob('aHR0cHM6Ly9maWxlLmdhcmRlbi9ZdHhSbC1nSGtXVmtmUHM3L0FNUHJlbGVhc2VzL2FtcDIwYi0yMTI2NjE0NDAuemlw');
             window.open(_url);
         }
     </script>
