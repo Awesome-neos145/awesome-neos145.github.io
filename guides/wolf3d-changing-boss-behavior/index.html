@@ -1,0 +1,29 @@
+<html>
+  <link rel="stylesheet" href="/styles.css">
+  <h1>Wolfenstein 3D - Changing Boss Death Behavior</h1>
+  <p>In technicality, there are 2 ways a boss death can work in Wolfenstein 3D.</p>
+  <p>One way is it drops a key upon death, and the second way is it sets up a deathcam.</p>
+  <p>But say you want to swap that up for example... (e.g. drop a key instead of showing a deathcam and vice-versa)</p>
+  <p>This guide will step you through changing this behavior into something you want.</p>
+  <br>
+  <p><strong>What is needed:</strong></p>
+  <p><strong>-Borland C++ Compiler 3.1</strong></p>
+  <p><strong>-Wolfenstein 3D source code</strong></p>
+  <p><strong>-DOS emulator (or something that is capable of running 16-bit code efficiently)</strong></p>
+  <br>
+  <p><strong>The files we are changing:</strong></p>
+  <p><strong>-WL_ACT2.C</strong></p>
+  <p><strong>-WL_STATE.C</strong></p>
+  <p>Let's get started!</p>
+  <br>
+  <br>
+  <p>Open up your code editor of choice and open <strong>WL_STATE.C</strong>.</p>
+  <p>Now find the boss you want to edit. Find "case bossobj". It should look a little something like this:</p>
+  <img src="https://file.garden/YtxRl-gHkWVkfPs7/tuts/1.png" alt="Codeblock 1">
+  <p>Note the <code>PlaceItemType</code> line at the bottom. We can see it spawns an item type of <code>bo_key1</code> at its relative position.</p>
+  <p>Let's look at a boss that spawns a deathcam now.</p>
+  <img src="https://file.garden/YtxRl-gHkWVkfPs7/tuts/2.png" alt="Codeblock 2">
+  <p>We can now see that there's a <code>gamestate.killx = player->x;</code> or Y. This sets the deathcam position.</p>
+  <p>So you can implement any of those lines into a boss and they should work... but not yet.</p>
+  <p>Now let's take a look at <strong>WL_ACT2.C</strong>.</p>
+</html>
