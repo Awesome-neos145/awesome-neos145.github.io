@@ -26,4 +26,10 @@
   <p>We can now see that there's a <code>gamestate.killx = player->x;</code> or Y. This sets the deathcam position.</p>
   <p>So you can implement any of those lines into a boss and they should work... but not yet.</p>
   <p>Now let's take a look at <strong>WL_ACT2.C</strong>.</p>
+  <p>Find "statetype" and then the statecase which you saw in the boss you were looking at earlier. (Found in the <code>NewState</code> line usually)</p>
+  <p>Make sure to tab down until you see a bunch of <code>statetype</code> codes.</p>
+  <p>At the end of the "boss"dies you'll find either <code>NULL</code> or <code>A_StartDeathCam</code> as an action. (mine is <code>A_InstantVictory</code> because i removed the deathcam in AMP)</p>
+  <img src="https://file.garden/YtxRl-gHkWVkfPs7/tuts/3.png" alt="Codeblock 3">
+  <p>So you'll want to use <code>NULL</code> if giving an item upon death and use <code>A_StartDeathCam</code> if you want to... use a death cam with the boss.<p>
+  <p>Make your changes and rebuild your project. The changes should reflect.</p>
 </html>
