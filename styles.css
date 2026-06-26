@@ -130,3 +130,8 @@ li.dropdown {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.links {
+  text-decoration: underline;
+  cursor: pointer;
+}
