@@ -1,11 +1,56 @@
 <html>
-    <link rel="stylesheet" href="/styles.css">
-    <h1>How to get past Activation on bad Apple A5 devices</h1>
-    <h2>(Guide only applies to IMEIs starting with "9900")</h2>
-    <p>What you'll need:</p>
-    <p><strong><a href="https://www.microcenter.com/product/661033/raspberry-pi-pico-microcontroller-development-board">-Raspberry Pi Pico RP2040 (these are relatively cheap)</a></strong></p>
-    <p><strong><a href="https://www.amazon.com/dp/B083M1S6QT">-Micro USB OTG Y-Cable</a></strong></p>
-    <p><strong>-A5 device</strong></p>
-    <p><strong><a href="https://www.reddit.com/r/LegacyJailbreak/comments/1djuprf/working_checkm8a5_on_the_raspberry_pi_pico/">-checkm8-pico</a></strong></p>
-    <p><strong><a href="https://github.com/LukeZGD/Legacy-iOS-Kit">-Legacy iOS Kit</a></strong></p>
+    <link rel="stylesheet" href="../../styles.css">
+    <h1>Bypassing Activation on "Bricked Activation Devices"</h1>
+    <p>Recently, Apple has been disabling or bricking activation services for older devices.</p>
+    <p>The list includes but is not limited to:</p>
+    <h2>iPhones</h2>
+        <p><i>-iPhone 2G</i></p>
+        <p><i>-iPhone 3G</i></p>
+        <p><i>-iPhone 3GS</i></p>
+        <p><i>-iPhone 4 (GSM)</i></p>
+        <p><i>-iPhone 4S (specifically on IMEIs starting with "9900")</i></p>
+    <h2>iPads</h2>
+        <p><i>-iPad 1 (GSM)</i></p>
+        <p><i>-iPad 2 (GSM)</i></p>
+    <p><strong>This list may expand in the future.</strong></p>
+    <p>I was holding off on making this tutorial for a while, but due to recent events (Apple accidentally unsigning baseband firmware, and the current activation bricking) I'll make it.</p>
+    <h1><u>Preparation</u></h1>
+    <h3>Method 1 requires:</h3>
+    <p><i><a href="https://github.com/LukeZGD/Legacy-iOS-Kit">-Legacy iOS Kit</a></i></p>
+    <h2>If Method 1 does not work:</h2>
+    <h3>Method 2 requires:</h3>
+    <p><i><a href="https://github.com/LukeZGD/Legacy-iOS-Kit">-Legacy iOS Kit</a></i></p>
+    <p><i><a href="https://www.raspberrypi.com/products/raspberry-pi-pico/">-Raspberry Pi Pico</a></i></p>
+    <p><i><a href="https://www.reddit.com/r/LegacyJailbreak/comments/1djuprf/working_checkm8a5_on_the_raspberry_pi_pico/">-checkm8-a5</a></i></p>
+    <p><i>-Micro USB OTG Y Cable</i></p>
+    <h1><u>Method 1 Process</u></h1>
+    <p>First, install Legacy iOS Kit. Let it run its initial setup process and pull any updates.</p>
+    <p>If your device is an iPhone 2G-4 running a version less or equal to iOS 6.1.6, you may proceed to "Hacktivate" it (go to <code>Useful Utilities -> Hacktivate Device</code>). No further action will be required.</p>
+    <p>However, if you have an iPhone 4/4S running iOS 7 or higher, please continue.</p>
+    <br>
+    <p>This part assumes that you have restored iOS with Cydia preinstalled. There is a chance that OpenSSH was installed with it. If you do not, continue with Method 2.</p>
+    <p>In Legacy iOS Kit, navigate to <code>Useful Utilities -> SSH Ramdisk</code>. In the option that pops up, select "kDFU".</p>
+    <p>It will then try to boot the iPhone into "pwned DFU mode". If it doesn't work, stop the script and try again. If it continues to fail, you will need to use Method 2.</p>
+    <p>Once you arrive at the SSH Ramdisk menu, select "Connect to SSH". Then once you're at the iPhone's prompt, execute "mount.sh".</p>
+    <p>Then, run <code>cd /mnt1/Applications</code>.</p>
+    <p>After changing to the Applications folder, run <code>rm -rf ./Setup.app/</code>. After which, run <code>reboot_bak</code>.</p>
+    <p>If done right, your device should boot straight to the home screen.</p>
+    <h1><u>Method 2 Process</u></h1>
+    <p>First, install Legacy iOS Kit. Let it run its initial setup process and pull any updates.</p>
+    <p>Next, download checkm8-a5. The ZIP file should contain 3 UF2 files. You will need to flash the correct UF2.</p>
+    <p>"8940.uf2" - For iPhone 4S/iPad 2</p>
+    <p>"8942.uf2" - For iPad mini/iPod Touch 5</p>
+    <p>"8945.uf2" - For iPad 3/Apple TV</p>
+    <p>After which, plug your device into power/your computer and enter DFU mode.</p>
+    <p>You will then need to connect everything up with the Adapter:</p>
+    <p><strong>-Pi connects to the male Micro USB port</strong></p>
+    <p><strong>-Standard Micro USB cable connects to female Micro USB port for power</strong></p>
+    <p><strong>-iPhone connects to the female USB-A port</strong></p>
+    <p>You will see the LED on the Pi flash rapidly. You will know it has succeeded in pwning when the LED stays on and flashes consistently without a pattern.</p>
+    <p>If the LED starts flashing rapidly and then erratically, the iPhone is in a half-pwned state and you will need to reenter DFU mode to retry.</p>
+    <p>Once successful, go into Legacy iOS Kit and go to <code>Useful Utilities -> SSH Ramdisk</code>.</p>
+    <p>Once you arrive at the SSH Ramdisk menu, select "Connect to SSH". Then once you're at the iPhone's prompt, execute "mount.sh".</p>
+    <p>Then, run <code>cd /mnt1/Applications</code>.</p>
+    <p>After changing to the Applications folder, run <code>rm -rf ./Setup.app/</code>. After which, run <code>reboot_bak</code>.</p>
+    <p>If done right, your device should boot straight to the home screen.</p>
 </html>
